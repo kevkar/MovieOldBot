@@ -60,13 +60,14 @@ def doProgram(api,movieDict,eventDict):
     while True:
         print("Type y to generate new tweet, t to tweet, q to quit")
         randomMovie = ''
+        theTweet = '';
         x = input()
         if x == 'y':
             randomMovie = randomMovieTitle(movieDict)
             theTweet = getTweet(randomMovie, movieDict, eventDict)
             print(theTweet)
         elif x == 't':
-            if (randomMovie == ''):
+            if (randomMovie == '' || theTweet == ''):
                 print("You have to generate a tweet first!")
                 continue
             tweet(api, theTweet)
