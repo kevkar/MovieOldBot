@@ -1,6 +1,6 @@
 # MovieOldBot
 
-This is a Twitter bot that posts tweets that make you feel old. 
+This is a Twitter bot that posts tweets that make you feel old. [Check it out here](https://twitter.com/KevinKarch2)
 
 ![Alt text](https://i.imgur.com/ZVVRNd8.png)
 
