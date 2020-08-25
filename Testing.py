@@ -56,24 +56,24 @@ def tweet(api,tweet):
 
 
 # if you dont like the random movie, get another one and tweet it
-def doProgram(api,movieDict,eventDict):
+def doProgram(api,movieDict,eventDict,randomMovie):
     while True:
         print("Type y to generate new tweet, t to tweet, q to quit")
-        randomMovie = ''
-        theTweet = '';
         x = input()
         if x == 'y':
             randomMovie = randomMovieTitle(movieDict)
             theTweet = getTweet(randomMovie, movieDict, eventDict)
             print(theTweet)
         elif x == 't':
-            if (randomMovie == '' | theTweet == ''):
+            if randomMovie == '':
                 print("You have to generate a tweet first!")
                 continue
             tweet(api, theTweet)
+            print("Tweet successful")
             break
         elif x == 'q':
             break
 
 
-doProgram(api, movieDict, eventDict)
+randomMovie = ''
+doProgram(api, movieDict, eventDict, randomMovie)
