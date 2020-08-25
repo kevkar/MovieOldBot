@@ -67,7 +67,7 @@ def doProgram(api,movieDict,eventDict):
             theTweet = getTweet(randomMovie, movieDict, eventDict)
             print(theTweet)
         elif x == 't':
-            if (randomMovie == '' || theTweet == ''):
+            if (randomMovie == '' | theTweet == ''):
                 print("You have to generate a tweet first!")
                 continue
             tweet(api, theTweet)
