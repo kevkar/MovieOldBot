@@ -6,8 +6,10 @@ import random
 
 # creates API with four keys from twitter development kit
 def createAPI():
-    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-    auth.set_access_token(key, secret)
+    auth = tweepy.OAuthHandler("Js5BOHpIl2VLKIAE5QxT7tXLj",
+                               "ABTWy3taPtEaPFJaOoOiygty8vS8tHXB1du4p6ASYJcSwCB3Jk")
+    auth.set_access_token("1297879170463207425-3WWnEosU3tggNxzzpaMgfdGWGzB6uc",
+                          "I8RyGSxGQqrBmytOFeCWD0LhemsSn9HOtQ2DdbDYQi4mX")
 
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
@@ -58,9 +60,9 @@ def tweet(api,tweet):
 # if you dont like the random movie, get another one and tweet it
 def doProgram(api,movieDict,eventDict,randomMovie):
     while True:
-        print("Type y to generate new tweet, t to tweet, q to quit")
+        print("Type n to generate new tweet, t to tweet, q to quit")
         x = input()
-        if x == 'y':
+        if x == 'n':
             randomMovie = randomMovieTitle(movieDict)
             theTweet = getTweet(randomMovie, movieDict, eventDict)
             print(theTweet)
@@ -73,7 +75,10 @@ def doProgram(api,movieDict,eventDict,randomMovie):
             break
         elif x == 'q':
             break
+        else:
+            print("Invalid command!")
 
 
 randomMovie = ''
 doProgram(api, movieDict, eventDict, randomMovie)
+
