@@ -6,19 +6,19 @@ import random
 
 # creates API with four keys from twitter development kit
 def createAPI():
-    auth = tweepy.OAuthHandler("Js5BOHpIl2VLKIAE5QxT7tXLj",
-                               "ABTWy3taPtEaPFJaOoOiygty8vS8tHXB1du4p6ASYJcSwCB3Jk")
-    auth.set_access_token("1297879170463207425-3WWnEosU3tggNxzzpaMgfdGWGzB6uc",
-                          "I8RyGSxGQqrBmytOFeCWD0LhemsSn9HOtQ2DdbDYQi4mX")
+    auth = tweepy.OAuthHandler(consumerkey,
+                               secretkey)
+    auth.set_access_token(key,
+                          secret)
 
     api = tweepy.API(auth, wait_on_rate_limit=True,
                      wait_on_rate_limit_notify=True)
 
     try:
         api.verify_credentials()
-        print("Authentication Success")
+        print("Authentication Success!")
     except:
-        print("Failure Authenticating")
+        print("Authentication Failed!")
 
     return api
 
@@ -26,13 +26,14 @@ def createAPI():
 #api object created with above method
 api = createAPI()
 
+
 # creates dict of col1:col2 key:value
 def getCSV(csv, col1, col2):
     df = pandas.read_csv(csv, usecols=[col1, col2])
     return df.set_index(col1)[col2].to_dict()
 
 
-# creates the movie and event dictts from csv files
+# creates the movie and event dicts from csv files
 movieDict = getCSV('MoviesList.csv', 'title', 'year')
 eventDict = getCSV('EventsList.csv', 'year', 'event')
 
@@ -49,7 +50,8 @@ def getTweet(movieName, movieDict, eventDict):
 
 # returns random movie title as string
 def randomMovieTitle(movieDict):
-    return random.choice(list(movieDict.keys()))
+    movieKeys = list(movieDict.keys())
+    return random.choice(movieKeys)
 
 
 # does the actual tweeting with the twitter api
